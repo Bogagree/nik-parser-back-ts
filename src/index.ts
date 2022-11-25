@@ -2,7 +2,7 @@ import express, {Request, Response} from 'express'
 
 
 const app = express()
-const port = 3010
+const port = process.env.PORT || 3010
 
 app.get('/', (req: Request, res: Response) => {
     let helloMessage = 'Hello Natasha, Gleb and Alisa and Bogagree and IT-Incubator!';
