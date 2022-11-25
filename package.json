@@ -1,12 +1,19 @@
 {
   "name": "nik-parser-back3",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.ts",
   "license": "MIT",
   "scripts": {
-    "debug": "nodemon --inspect index.js"
+    "watch": "tsc -w",
+    "debug": "nodemon --inspect dist/index.js"
   },
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "types/express",
+    "@types/node": "^18.11.9",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.3"
   }
 }
