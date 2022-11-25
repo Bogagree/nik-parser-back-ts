@@ -1,0 +1,12 @@
+{
+  "name": "nik-parser-back3",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "debug": "nodemon --inspect index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
