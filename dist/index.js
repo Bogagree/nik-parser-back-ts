@@ -9,12 +9,14 @@ const app = (0, express_1.default)();
 const port = process.env.PORT || 3010;
 const products = [{ id: 1, title: 'banan' }, { id: 2, title: 'moloko' }, { id: 3, title: 'pivo' }];
 const addresses = [{ id: 1, title: 'gorod N' }, { id: 2, title: 'gorod M' }];
-const parserMiddleware = (0, body_parser_1.default)({});
+const parserMiddleware = body_parser_1.default.json();
 app.use(parserMiddleware);
 app.get('/products', (req, res) => {
-    // res.send(products)
+    const newTitle = req.query.title;
     if (req.query.title) {
-        res.send(products.filter(product => product.title.indexOf(req.query.title) > -1));
+        if (typeof newTitle === "string") {
+            res.send(products.filter(product => product.title.indexOf(newTitle) > -1));
+        }
     }
     else {
         res.send(products);
@@ -39,11 +41,12 @@ app.delete('/products/:id', (req, res) => {
     }
 });
 app.post('/products', (req, res) => {
-    // let newProduct = {id: Math.floor(Math.random()*100), title: req.body.title}
-    const newProduct = {
-        id: +(new Date()),
-        title: req.body.title
-    };
+    const newProduct = { id: Math.floor(Math.random() * 100), title: req.body.title };
+    // const newProduct = {
+    //     id: +(new Date()),
+    //     title: req.body.title
+    // }
+    console.log(newProduct);
     products.push(newProduct);
     res.status(201).send(newProduct);
 });
